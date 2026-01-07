@@ -122,3 +122,9 @@ iframe {
     width: 100%;
     color: #ffffff;
 }
+
+.right box-icon{
+    background: white;
+    margin-right: 15px;
+    border-radius: 100px;
+}

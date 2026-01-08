@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Code Editor</title>
-    <link rel="stylesheet" href="code-editor.css">
     <link rel="icon" href="vs.jpeg">
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="stylesheet" href="code-editor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material.min.css">
 </head>
 
 <body>
@@ -40,21 +41,52 @@
         <div class="right">
             <label><box-icon name='play-circle'></box-icon> Live Server<p id="p1"></p>
                 <p id="p2"></p>
-                <p id="p3"></p></label>
+                <p id="p3"></p>
+            </label>
             <iframe id="output" frameborder="0"></iframe>
         </div>
     </div>
+    <!-- CODE MINNOR -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+    <!-- BOX ICONS  -->
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
 </body>
 <script>
-    function run() {
-        let html_code = document.getElementById("html-code").value;
-        let css_code = document.getElementById("css-code").value;
-        let js_code = document.getElementById("js-code").value;
+        const htmlEditor = CodeMirror.fromTextArea(
+        document.getElementById("html-code"),
+        {mode:"text/html", theme: "material", lineNumbers: true }
+        );
+
+        const cssEditor = CodeMirror.fromTextArea(
+        document.getElementById("css-code"),
+        {mode: "css", theme: "material", lineNumbers: true }
+        );
+
+        const jsEditor = CodeMirror.fromTextArea(
+        document.getElementById("js-code"),
+        {mode: "javascript", theme: "material", lineNumbers: true }
+        );
+
+        function run() {
+            let html_code = htmlEditor.getValue();
+        let css_code = cssEditor.getValue();
+        let js_code = jsEditor.getValue();
         let output = document.getElementById("output");
 
-        output.contentDocument.body.innerHTML = html_code+"<style>"+ css_code +"</style>";
+        output.contentDocument.body.innerHTML =
+        html_code + "<style>" + css_code + "</style>";
+
         output.contentWindow.eval(js_code);
     }
+
+        htmlEditor.on("change", run);
+        cssEditor.on("change", run);
+        jsEditor.on("change", run);
 </script>
+
 
 </html>

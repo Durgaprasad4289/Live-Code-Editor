@@ -26,3 +26,9 @@ This project is beginner-friendly and follows a **professional GitHub repository
 ---
 
 ## 📁 Project Structure
+Live Editor/
+├── index.html
+├── style.css
+└── script.js
+
+## live Editor img

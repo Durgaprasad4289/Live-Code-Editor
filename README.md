@@ -31,4 +31,5 @@ Live Editor/
 ├── style.css
 └── script.js
 
-## live Editor img
+## 🖼️ live Editor img
+<img width="502" height="415" alt="Image" src="https://github.com/user-attachments/assets/ae6e15e3-0f4a-4925-aef0-e1fa71177387" />

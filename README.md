@@ -26,10 +26,13 @@ This project is beginner-friendly and follows a **professional GitHub repository
 ---
 
 ## 📁 Project Structure
+
+```text
 Live Editor/
 ├── index.html
 ├── style.css
 └── script.js
+```
 
 ----
 
